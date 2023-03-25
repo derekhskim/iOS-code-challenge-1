@@ -58,6 +58,8 @@ class LoginViewController: UIViewController, MainStoryBoarded {
         rememberMeButton.setImage(isRememberMeChecked ? CheckImages.checked : CheckImages.unchecked, for: .normal)
         
         emailTextField.text = UserDefaults.standard.string(forKey: "UserEmail")
+        emailTextField.keyboardType = .emailAddress
+        
         passwordTextField.isSecureTextEntry = true
         
         navigationController?.setNavigationBarHidden(true, animated: true)
