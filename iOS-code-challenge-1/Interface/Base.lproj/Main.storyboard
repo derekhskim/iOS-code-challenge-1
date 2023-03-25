@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iO5-Zz-nyz">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="iOS_code_challenge_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="LaunchpadByVogLogo" translatesAutoresizingMaskIntoConstraints="NO" id="odV-DC-Xlk">
+                                <rect key="frame" x="77" y="69" width="239" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="128" id="Cey-3P-40G"/>
+                                    <constraint firstAttribute="width" priority="750" constant="239" id="raZ-Ch-yPQ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="launchpad-mentoring-home-page-img" translatesAutoresizingMaskIntoConstraints="NO" id="KMy-gA-bfT">
+                                <rect key="frame" x="0.0" y="217" width="393" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="749" constant="210" id="35j-rc-hCC"/>
+                                    <constraint firstAttribute="width" priority="749" constant="395" id="b0o-r5-XSw"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KoO-bb-Pqu">
+                                <rect key="frame" x="40" y="477" width="313" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="g2T-iq-KBc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cri-ph-rZ0">
+                                <rect key="frame" x="40" y="568" width="313" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="LVz-kG-7MT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTe-tL-CGb">
+                                <rect key="frame" x="40" y="639" width="213" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square" catalog="system" imagePlacement="leading" title="Remember Me" imagePadding="10">
+                                    <color key="baseForegroundColor" systemColor="systemGray2Color"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="rememberMeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6XX-Nn-4tD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="401-sT-43L">
+                                <rect key="frame" x="40" y="737" width="313" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="5ER-rb-Xn2"/>
+                                </constraints>
+                                <color key="tintColor" name="LPYellow"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Login">
+                                    <color key="baseForegroundColor" name="LPTextGray"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ow-9E-hha"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yTe-tL-CGb" firstAttribute="top" secondItem="Cri-ph-rZ0" secondAttribute="bottom" constant="20" id="1XB-M5-w2G"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cri-ph-rZ0" secondAttribute="trailing" constant="40" id="7SC-5b-WUB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="401-sT-43L" secondAttribute="bottom" constant="30" id="KU5-Up-Ahu"/>
+                            <constraint firstItem="odV-DC-Xlk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M2d-61-wIz"/>
+                            <constraint firstItem="KoO-bb-Pqu" firstAttribute="top" secondItem="KMy-gA-bfT" secondAttribute="bottom" constant="50" id="R7z-Sl-cQ1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="401-sT-43L" secondAttribute="trailing" constant="40" id="TZJ-dX-etU"/>
+                            <constraint firstItem="KMy-gA-bfT" firstAttribute="top" secondItem="odV-DC-Xlk" secondAttribute="bottom" constant="20" id="d8j-cN-1zu"/>
+                            <constraint firstItem="odV-DC-Xlk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="fjH-mx-yBP"/>
+                            <constraint firstItem="KMy-gA-bfT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gCN-XM-UNg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KoO-bb-Pqu" secondAttribute="trailing" constant="40" id="jkM-br-dzP"/>
+                            <constraint firstItem="KoO-bb-Pqu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="mcZ-9L-ank"/>
+                            <constraint firstItem="401-sT-43L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="moh-4S-IWj"/>
+                            <constraint firstItem="401-sT-43L" firstAttribute="top" secondItem="yTe-tL-CGb" secondAttribute="bottom" constant="60" id="p5g-we-yhd"/>
+                            <constraint firstItem="Cri-ph-rZ0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="sax-dw-bGc"/>
+                            <constraint firstAttribute="trailing" secondItem="KMy-gA-bfT" secondAttribute="trailing" id="thr-jW-BgW"/>
+                            <constraint firstItem="Cri-ph-rZ0" firstAttribute="top" secondItem="KoO-bb-Pqu" secondAttribute="bottom" constant="40" id="w1u-UY-kPo"/>
+                            <constraint firstItem="KMy-gA-bfT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xYr-sn-Ubs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yTe-tL-CGb" secondAttribute="trailing" constant="140" id="yN5-C2-tY8"/>
+                            <constraint firstItem="yTe-tL-CGb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="zm6-5M-hLY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="A3E-ho-tFa"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="KoO-bb-Pqu" id="mzn-Uz-xDH"/>
+                        <outlet property="loginButton" destination="401-sT-43L" id="CHG-dg-cWo"/>
+                        <outlet property="passwordTextField" destination="Cri-ph-rZ0" id="ZbL-Ix-vVe"/>
+                        <outlet property="rememberMeButton" destination="yTe-tL-CGb" id="MF6-fy-e8K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1043.5114503816794" y="-27.464788732394368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KMj-YF-i3G">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iO5-Zz-nyz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BMQ-yi-kz0">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="uu5-BC-Y5r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WBr-ro-FeN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116.79389312977099" y="-27.464788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LaunchpadByVogLogo" width="104" height="31"/>
+        <image name="launchpad-mentoring-home-page-img" width="300" height="200"/>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <namedColor name="LPTextGray">
+            <color red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LPYellow">
+            <color red="1" green="0.80000000000000004" blue="0.0078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
