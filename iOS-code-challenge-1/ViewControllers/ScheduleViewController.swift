@@ -26,8 +26,10 @@ class ScheduleViewController: UIViewController, UICalendarViewDelegate, MainStor
                 return
             }
             
-            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                sceneDelegate.checkAuthentication()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                    sceneDelegate.checkAuthentication()
+                }
             }
         }
     }
@@ -44,6 +46,7 @@ class ScheduleViewController: UIViewController, UICalendarViewDelegate, MainStor
         view.addSubview(calendarView)
         
         calendarView.translatesAutoresizingMaskIntoConstraints = false
+        self.navigationController?.isNavigationBarHidden = true
         
         NSLayoutConstraint.activate([
             calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

@@ -9,9 +9,9 @@ import UIKit
 
 class LoginViewController: UIViewController, MainStoryBoarded {
     
-    weak var coordinator: MainCoordinator?    
+    weak var coordinator: MainCoordinator?
     var isRememberMeChecked = false
-
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, MainStoryBoarded {
         let loginRequest = User(email: email, password: password)
         
         if !email.isValidEmail {
-                self.showAlert(title: "Invalid Email", message: "This email address is not available. Choos a different address.", buttonTitle: "OK")
+            self.showAlert(title: "Invalid Email", message: "This email address is not available. Choos a different address.", buttonTitle: "OK")
         }
         
         if !email.isEmpty && email.isValidEmail && !password.isEmpty {
@@ -47,20 +47,12 @@ class LoginViewController: UIViewController, MainStoryBoarded {
                     return
                 }
                 
-                NetworkManager.shared.login(user: loginRequest) { result in
-                    switch result {
-                    case .success(_):
-                        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                            sceneDelegate.checkAuthentication()
-                            print("Login to endpoint success")
-                        }
-                    case .failure(let error):
-                        self.showAlert(title: "Login Failed", message: "Sorry, \(error.localizedDescription).", buttonTitle: "OK")
-                    }
+                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                    sceneDelegate.checkAuthentication()
                 }
             }
         } else {
-                self.showAlert(title: "Email or password is empty", message: "Please ensure you have entered both email and password correctly.", buttonTitle: "OK")
+            self.showAlert(title: "Email or password is empty", message: "Please ensure you have entered both email and password correctly.", buttonTitle: "OK")
         }
     }
     

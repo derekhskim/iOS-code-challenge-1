@@ -15,12 +15,19 @@ class AuthService {
     private init() {}
     
     public func signIn(with user: User, completion: @escaping (Error?) -> Void) {
-        Auth.auth().signIn(withEmail: user.email, password: user.password) { result, error in
-            if let error = error {
-                completion(error)
-                return
-            } else {
+        Auth.auth().signIn(withEmail: user.email, password: user.password) { (authResult, error) in
+            
+            if authResult != nil {
                 completion(nil)
+            }
+            
+            NetworkManager.shared.login(user: user) { result in
+                switch result {
+                case .success(_):
+                    completion(nil)
+                case .failure(let error):
+                    completion(error)
+                }
             }
         }
     }
