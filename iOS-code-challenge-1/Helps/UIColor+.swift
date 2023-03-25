@@ -11,6 +11,8 @@ enum LPColor: String {
     case LPYellow
     case LPTextGray
     case LPVoidWhite
+    case LPLightYellow
+    case LPVerySubtleGray
 }
 
 extension UIColor {

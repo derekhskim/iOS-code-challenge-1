@@ -10,6 +10,7 @@ import UIKit
 class ScheduleViewController: UIViewController, UICalendarViewDelegate, MainStoryBoarded {
     
     let calendarView = UICalendarView()
+    let tableView = UITableView()
     let gregorianCalendar = Calendar(identifier: .gregorian)
     var scheduleData: [Schedule] = []
     

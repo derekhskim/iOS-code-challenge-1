@@ -20,6 +20,8 @@
 		65E16D1D29CE9C6F00B92F07 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E16D1C29CE9C6F00B92F07 /* NetworkManager.swift */; };
 		65E16D1F29CE9CDC00B92F07 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E16D1E29CE9CDC00B92F07 /* Constants.swift */; };
 		65E16D2129CE9D2F00B92F07 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E16D2029CE9D2F00B92F07 /* User.swift */; };
+		65E16D2729CEC65500B92F07 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E16D2529CEC65500B92F07 /* CustomTableViewCell.swift */; };
+		65E16D2829CEC65500B92F07 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65E16D2629CEC65500B92F07 /* CustomTableViewCell.xib */; };
 		65E9262029CE84D700259BEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E9261F29CE84D700259BEC /* AppDelegate.swift */; };
 		65E9262229CE84D700259BEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E9262129CE84D700259BEC /* SceneDelegate.swift */; };
 		65E9262429CE84D700259BEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E9262329CE84D700259BEC /* LoginViewController.swift */; };
@@ -42,6 +44,8 @@
 		65E16D1C29CE9C6F00B92F07 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		65E16D1E29CE9CDC00B92F07 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		65E16D2029CE9D2F00B92F07 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		65E16D2529CEC65500B92F07 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		65E16D2629CEC65500B92F07 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		65E9261C29CE84D700259BEC /* iOS-code-challenge-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-code-challenge-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E9261F29CE84D700259BEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65E9262129CE84D700259BEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +125,23 @@
 			path = NetworkHandler;
 			sourceTree = "<group>";
 		};
+		65E16D2329CEC62300B92F07 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				65E16D2429CEC63700B92F07 /* CustomTableViewCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		65E16D2429CEC63700B92F07 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				65E16D2529CEC65500B92F07 /* CustomTableViewCell.swift */,
+				65E16D2629CEC65500B92F07 /* CustomTableViewCell.xib */,
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
 		65E9261329CE84D700259BEC = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +161,7 @@
 		65E9261E29CE84D700259BEC /* iOS-code-challenge-1 */ = {
 			isa = PBXGroup;
 			children = (
+				65E16D2329CEC62300B92F07 /* Views */,
 				65E16D0D29CE969E00B92F07 /* Coordinator */,
 				65E16D0529CE8BDB00B92F07 /* Interface */,
 				65E16D0329CE8BC800B92F07 /* Helps */,
@@ -214,6 +236,7 @@
 			files = (
 				65E9262C29CE84D900259BEC /* LaunchScreen.storyboard in Resources */,
 				65E9262929CE84D900259BEC /* Assets.xcassets in Resources */,
+				65E16D2829CEC65500B92F07 /* CustomTableViewCell.xib in Resources */,
 				65E9262729CE84D700259BEC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,6 +257,7 @@
 				65E16D1F29CE9CDC00B92F07 /* Constants.swift in Sources */,
 				65E16D1529CE973C00B92F07 /* ScheduleViewController.swift in Sources */,
 				65E16D1929CE99E000B92F07 /* String+.swift in Sources */,
+				65E16D2729CEC65500B92F07 /* CustomTableViewCell.swift in Sources */,
 				65E16D0C29CE956100B92F07 /* LPButton.swift in Sources */,
 				65E16D0829CE911000B92F07 /* AppConstants.swift in Sources */,
 				65E16D1729CE992200B92F07 /* UIViewController+.swift in Sources */,
