@@ -34,19 +34,33 @@ class LoginViewController: UIViewController, MainStoryBoarded {
         }
         
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        let loginRequest = User(email: email, password: password)
         
         if !email.isValidEmail {
-            DispatchQueue.main.async {
                 self.showAlert(title: "Invalid Email", message: "This email address is not available. Choos a different address.", buttonTitle: "OK")
-            }
         }
         
         if !email.isEmpty && email.isValidEmail && !password.isEmpty {
-            coordinator?.goToScheduleVC()
-        } else {
-            DispatchQueue.main.async {
-                self.showAlert(title: "Email or password is empty", message: "Please ensure you have entered both email and password correctly.", buttonTitle: "OK")
+            AuthService.shared.signIn(with: loginRequest) { error in
+                if let error = error {
+                    self.showAlert(title: "Login Failed", message: "Sorry, \(error.localizedDescription).", buttonTitle: "OK")
+                    return
+                }
+                
+                NetworkManager.shared.login(user: loginRequest) { result in
+                    switch result {
+                    case .success(_):
+                        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                            sceneDelegate.checkAuthentication()
+                            print("Login to endpoint success")
+                        }
+                    case .failure(let error):
+                        self.showAlert(title: "Login Failed", message: "Sorry, \(error.localizedDescription).", buttonTitle: "OK")
+                    }
+                }
             }
+        } else {
+                self.showAlert(title: "Email or password is empty", message: "Please ensure you have entered both email and password correctly.", buttonTitle: "OK")
         }
     }
     

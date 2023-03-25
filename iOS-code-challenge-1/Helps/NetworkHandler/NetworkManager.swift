@@ -9,6 +9,9 @@ import Foundation
 
 class NetworkManager {
     
+    public static let shared = NetworkManager()
+    
+    // MARK: - Login user via "POST" Method
     func login(user: User, completion: @escaping (Result<Bool, Error>) -> Void) {
         guard let url = URL(string: "\(baseUrl)/login") else {
             print("Error: Cannot create URL")

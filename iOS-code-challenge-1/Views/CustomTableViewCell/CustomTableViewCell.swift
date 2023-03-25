@@ -15,12 +15,14 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var roomLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    // MARK: - awakeFromNib()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         configureBackground()
     }
 
+    // MARK: - Function
     func configureBackground() {
         backgroundHoldingView.layer.cornerRadius = 10
         backgroundHoldingView.clipsToBounds = true
