@@ -19,19 +19,7 @@ class ScheduleViewController: UIViewController, UICalendarViewDelegate, MainStor
     
     // MARK: - @IBAction
     @IBAction func logOutButtonTapped(_ sender: Any) {
-        AuthService.shared.signOut { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                self.showAlert(title: "Signout Failed", message: "Sorry, \(error.localizedDescription).", buttonTitle: "OK")
-                return
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                    sceneDelegate.checkAuthentication()
-                }
-            }
-        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - viewDidLoad()

@@ -28,28 +28,33 @@ class LoginViewController: UIViewController, MainStoryBoarded {
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         if isRememberMeChecked {
+            // Remeber User if isRemeberMeChecked = true
             UserDefaults.standard.set(emailTextField.text, forKey: "UserEmail")
         } else {
+            // Remove data if isRemeberMeChecked = false
             UserDefaults.standard.removeObject(forKey: "UserEmail")
         }
         
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         let loginRequest = User(email: email, password: password)
         
+        // Show Alert if email is not a valid email
         if !email.isValidEmail {
             self.showAlert(title: "Invalid Email", message: "This email address is not available. Choos a different address.", buttonTitle: "OK")
         }
         
+        // Check if all fields are filled and email is a valid email
         if !email.isEmpty && email.isValidEmail && !password.isEmpty {
-            AuthService.shared.signIn(with: loginRequest) { error in
-                if let error = error {
-                    self.showAlert(title: "Login Failed", message: "Sorry, \(error.localizedDescription).", buttonTitle: "OK")
-                    return
+            NetworkManager.shared.login(user: loginRequest) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(_):
+                        self.coordinator?.goToScheduleVC()
+                    case .failure(let error):
+                        self.showAlert(title: "Login Failed", message: "\(error.localizedDescription)", buttonTitle: "OK")
+                    }
                 }
                 
-                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                    sceneDelegate.checkAuthentication()
-                }
             }
         } else {
             self.showAlert(title: "Email or password is empty", message: "Please ensure you have entered both email and password correctly.", buttonTitle: "OK")

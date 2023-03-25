@@ -19,23 +19,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = .init(windowScene: windowScene)
         let nv = UINavigationController()
         coordinator = MainCoordinator(navigationController: nv)
+        coordinator?.start()
         window?.rootViewController = nv
         window?.makeKeyAndVisible()
         
-        checkAuthentication()
+//        checkAuthentication()
     }
 
-    public func checkAuthentication() {
-        print("checking authentication...")
-        
-        if Auth.auth().currentUser == nil {
-            print("Current user is nil. Starting with LoginViewController")
-            coordinator?.start()
-        } else {
-            print("Current user is not nil. Pushing ScheduleViewController")
-            coordinator?.goToScheduleVC()
-        }
-    }
+//    public func checkAuthentication() {
+//        print("checking authentication...")
+//
+//        if Auth.auth().currentUser == nil {
+//            print("Current user is nil. Starting with LoginViewController")
+//            coordinator?.start()
+//        } else {
+//            print("Current user is not nil. Pushing ScheduleViewController")
+//            coordinator?.goToScheduleVC()
+//        }
+//    }
 
 
 }

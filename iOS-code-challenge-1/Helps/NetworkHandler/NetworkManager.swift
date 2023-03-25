@@ -54,11 +54,29 @@ class NetworkManager {
                     print("Error: Cannot convert JSON object to Pretty JSON data")
                     return
                 }
-                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
+                guard let jsonResponse = String(data: prettyJsonData, encoding: .utf8) else {
                     print("Error: Couldn't print JSON in String")
                     return
                 }
-                print(prettyPrintedJson)
+                
+                // Returns response in JSON
+                print(jsonResponse)
+                
+                // Validate server's response 200 / 400+
+                let serverResponse = try JSONDecoder().decode(ServerResponse.self, from: data)
+                if let errorResponse = serverResponse.error {
+                    switch errorResponse.message {
+                    case "EMAIL_NOT_FOUND":
+                        completion(.failure(LoginError.emailNotFound))
+                    case "INVALID_PASSWORD":
+                        completion(.failure(LoginError.passwordInvalid))
+                    default:
+                        completion(.failure(LoginError.unknownError))
+                    }
+                } else {
+                    // call completion to indicate success of validation via calling endpoint
+                    completion(.success(true))
+                }
             } catch {
                 print("Error: Trying to convert JSON data to string")
                 return
