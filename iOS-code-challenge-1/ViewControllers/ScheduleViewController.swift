@@ -14,7 +14,14 @@ class ScheduleViewController: UIViewController, UICalendarViewDelegate, MainStor
     var scheduleData: [Schedule] = []
     
     // MARK: - @IBOutlet
+    @IBOutlet weak var topView: UIView!
     
+    // MARK: - @IBAction
+    @IBAction func logOutButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +36,7 @@ class ScheduleViewController: UIViewController, UICalendarViewDelegate, MainStor
         
         NSLayoutConstraint.activate([
             calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            calendarView.topAnchor.constraint(equalTo: topView.bottomAnchor),
             calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             calendarView.heightAnchor.constraint(equalToConstant: view.bounds.height / 2)

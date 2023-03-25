@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -120,9 +121,49 @@
                     <view key="view" contentMode="scaleToFill" id="68y-qW-AbR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSx-5h-Nn4">
+                                <rect key="frame" x="0.0" y="59" width="393" height="51"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4f-4b-cuf">
+                                        <rect key="frame" x="0.0" y="8" width="95.333333333333329" height="35"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title="Logout" imagePadding="5">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="logOutButtonTapped:" destination="FkI-db-4Aj" eventType="touchUpInside" id="PBi-e4-8Tk"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYY-Kz-uzC">
+                                        <rect key="frame" x="158.66666666666666" y="15" width="76" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" name="LPTextGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="LPYellow"/>
+                                <constraints>
+                                    <constraint firstItem="S4f-4b-cuf" firstAttribute="leading" secondItem="DSx-5h-Nn4" secondAttribute="leading" id="6g1-oe-tZ0"/>
+                                    <constraint firstAttribute="height" constant="51" id="Glc-66-u1U"/>
+                                    <constraint firstItem="QYY-Kz-uzC" firstAttribute="centerY" secondItem="DSx-5h-Nn4" secondAttribute="centerY" id="Pia-NR-jlO"/>
+                                    <constraint firstItem="QYY-Kz-uzC" firstAttribute="centerX" secondItem="DSx-5h-Nn4" secondAttribute="centerX" id="sEN-S8-WtE"/>
+                                    <constraint firstItem="S4f-4b-cuf" firstAttribute="top" secondItem="DSx-5h-Nn4" secondAttribute="top" constant="8" id="vUD-ct-es7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="dDf-NJ-OP7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dDf-NJ-OP7" firstAttribute="trailing" secondItem="DSx-5h-Nn4" secondAttribute="trailing" id="2VE-hf-bmC"/>
+                            <constraint firstItem="DSx-5h-Nn4" firstAttribute="top" secondItem="dDf-NJ-OP7" secondAttribute="top" id="2ms-Wp-cwJ"/>
+                            <constraint firstItem="DSx-5h-Nn4" firstAttribute="leading" secondItem="dDf-NJ-OP7" secondAttribute="leading" id="MfS-DB-8tv"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="topView" destination="DSx-5h-Nn4" id="Wn0-Cf-Vjl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jd-IE-nz4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,6 +195,7 @@
     </designables>
     <resources>
         <image name="LaunchpadByVogLogo" width="104" height="31"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="launchpad-mentoring-home-page-img" width="300" height="200"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <namedColor name="LPTextGray">
