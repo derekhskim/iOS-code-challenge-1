@@ -8,6 +8,8 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    var isRememberMeChecked = false
 
     // MARK: - @IBOutlet
     @IBOutlet weak var emailTextField: UITextField!
@@ -16,21 +18,33 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     // MARK: - @IBAction
-    @IBAction func rememberMeButtonTapped(_ sender: Any) {
-        print("rememberMeButton Tapped")
+    @IBAction func rememberMeButtonTapped(_ sender: UIButton) {
+        isRememberMeChecked.toggle()
+        
+        sender.setImage(isRememberMeChecked ? CheckImages.checked : CheckImages.unchecked, for: .normal)
+        UserDefaults.standard.set(isRememberMeChecked, forKey: "RememberMe")
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        print("loginButton Tapped")
+        if isRememberMeChecked {
+            UserDefaults.standard.set(emailTextField.text, forKey: "UserEmail")
+        } else {
+            UserDefaults.standard.removeObject(forKey: "UserEmail")
+        }
+        
+        print("login button Tapped")
     }
     
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isRememberMeChecked = UserDefaults.standard.bool(forKey: "RememberMe")
+        rememberMeButton.setImage(isRememberMeChecked ? CheckImages.checked : CheckImages.unchecked, for: .normal)
+        
+        emailTextField.text = UserDefaults.standard.string(forKey: "UserEmail")
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-
-
 }
 

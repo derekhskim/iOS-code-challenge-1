@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65E16D0829CE911000B92F07 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E16D0729CE911000B92F07 /* AppConstants.swift */; };
+		65E16D0A29CE942700B92F07 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E16D0929CE942700B92F07 /* UIColor+.swift */; };
+		65E16D0C29CE956100B92F07 /* LPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E16D0B29CE956100B92F07 /* LPButton.swift */; };
 		65E9262029CE84D700259BEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E9261F29CE84D700259BEC /* AppDelegate.swift */; };
 		65E9262229CE84D700259BEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E9262129CE84D700259BEC /* SceneDelegate.swift */; };
 		65E9262429CE84D700259BEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E9262329CE84D700259BEC /* LoginViewController.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		65E16D0729CE911000B92F07 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		65E16D0929CE942700B92F07 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		65E16D0B29CE956100B92F07 /* LPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPButton.swift; sourceTree = "<group>"; };
 		65E9261C29CE84D700259BEC /* iOS-code-challenge-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-code-challenge-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E9261F29CE84D700259BEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65E9262129CE84D700259BEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +46,8 @@
 		65E16D0329CE8BC800B92F07 /* Helps */ = {
 			isa = PBXGroup;
 			children = (
+				65E16D0929CE942700B92F07 /* UIColor+.swift */,
+				65E16D0B29CE956100B92F07 /* LPButton.swift */,
 			);
 			path = Helps;
 			sourceTree = "<group>";
@@ -63,6 +71,7 @@
 		65E16D0629CE8C0400B92F07 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				65E16D0729CE911000B92F07 /* AppConstants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -173,6 +182,9 @@
 				65E9262429CE84D700259BEC /* LoginViewController.swift in Sources */,
 				65E9262029CE84D700259BEC /* AppDelegate.swift in Sources */,
 				65E9262229CE84D700259BEC /* SceneDelegate.swift in Sources */,
+				65E16D0C29CE956100B92F07 /* LPButton.swift in Sources */,
+				65E16D0829CE911000B92F07 /* AppConstants.swift in Sources */,
+				65E16D0A29CE942700B92F07 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

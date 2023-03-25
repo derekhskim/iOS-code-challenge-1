@@ -57,16 +57,21 @@
                                     <action selector="rememberMeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6XX-Nn-4tD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="401-sT-43L">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="401-sT-43L" customClass="LPButton" customModule="iOS_code_challenge_1" customModuleProvider="target">
                                 <rect key="frame" x="40" y="737" width="313" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="5ER-rb-Xn2"/>
                                 </constraints>
-                                <color key="tintColor" name="LPYellow"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Login">
                                     <color key="baseForegroundColor" name="LPTextGray"/>
+                                    <color key="baseBackgroundColor" name="LPYellow"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ow-9E-hha"/>
                                 </connections>
@@ -128,6 +133,11 @@
             <point key="canvasLocation" x="116.79389312977099" y="-27.464788732394368"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="401-sT-43L">
+            <size key="intrinsicContentSize" width="65.666666666666671" height="34.333333333333336"/>
+        </designable>
+    </designables>
     <resources>
         <image name="LaunchpadByVogLogo" width="104" height="31"/>
         <image name="launchpad-mentoring-home-page-img" width="300" height="200"/>
