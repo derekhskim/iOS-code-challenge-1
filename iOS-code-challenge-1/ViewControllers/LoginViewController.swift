@@ -7,8 +7,9 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, MainStoryBoarded {
     
+    weak var coordinator: MainCoordinator?    
     var isRememberMeChecked = false
 
     // MARK: - @IBOutlet
@@ -32,7 +33,7 @@ class LoginViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "UserEmail")
         }
         
-        print("login button Tapped")
+        coordinator?.goToScheduleVC()
     }
     
     // MARK: - viewDidLoad()
