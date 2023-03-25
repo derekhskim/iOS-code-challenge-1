@@ -33,7 +33,21 @@ class LoginViewController: UIViewController, MainStoryBoarded {
             UserDefaults.standard.removeObject(forKey: "UserEmail")
         }
         
-        coordinator?.goToScheduleVC()
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        
+        if !email.isValidEmail {
+            DispatchQueue.main.async {
+                self.showAlert(title: "Invalid Email", message: "This email address is not available. Choos a different address.", buttonTitle: "OK")
+            }
+        }
+        
+        if !email.isEmpty && email.isValidEmail && !password.isEmpty {
+            coordinator?.goToScheduleVC()
+        } else {
+            DispatchQueue.main.async {
+                self.showAlert(title: "Email or password is empty", message: "Please ensure you have entered both email and password correctly.", buttonTitle: "OK")
+            }
+        }
     }
     
     // MARK: - viewDidLoad()
@@ -44,6 +58,7 @@ class LoginViewController: UIViewController, MainStoryBoarded {
         rememberMeButton.setImage(isRememberMeChecked ? CheckImages.checked : CheckImages.unchecked, for: .normal)
         
         emailTextField.text = UserDefaults.standard.string(forKey: "UserEmail")
+        passwordTextField.isSecureTextEntry = true
         
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
