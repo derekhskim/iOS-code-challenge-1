@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -23,21 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = nv
         window?.makeKeyAndVisible()
         
-//        checkAuthentication()
     }
-
-//    public func checkAuthentication() {
-//        print("checking authentication...")
-//
-//        if Auth.auth().currentUser == nil {
-//            print("Current user is nil. Starting with LoginViewController")
-//            coordinator?.start()
-//        } else {
-//            print("Current user is not nil. Pushing ScheduleViewController")
-//            coordinator?.goToScheduleVC()
-//        }
-//    }
-
 
 }
 

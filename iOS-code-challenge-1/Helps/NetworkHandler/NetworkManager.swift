@@ -85,4 +85,55 @@ class NetworkManager {
         task.resume()
     }
     
+    // MARK: - Fetch schedule data via "GET" method
+    func getScheduleData(for date: Date, completion: @escaping (Result<[Schedule], Error>) -> Void) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: date)
+        
+        guard let url = URL(string: "\(baseUrl)/schedule?date=\(dateString)") else {
+            print("Error: Cannot create URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error calling GET")
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                print("Error getting data")
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                print("Status code for Schedule Data: \(response.statusCode)")
+            }
+            
+            do {
+                let serverResponse = try JSONDecoder().decode(ServerResponse.self, from: data)
+                if let schedules = serverResponse.data {
+                    DispatchQueue.main.async {
+                        completion(.success(schedules))
+                    }
+                } else if let errorResponse = serverResponse.error {
+                    print("Error: \(errorResponse.message)")
+                    completion(.failure(error!))
+                }
+            } catch {
+                print("Error: Trying to convert JSON data to string")
+                completion(.failure(error))
+                return
+            }
+        }
+        task.resume()
+    }
+    
 }
