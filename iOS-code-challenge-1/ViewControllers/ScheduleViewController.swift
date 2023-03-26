@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController, UICalendarViewDelegate, MainStoryBoarded {
+class ScheduleViewController: UIViewController, MainStoryBoarded {
     
     let calendarView = UICalendarView()
     let tableView = UITableView()
@@ -26,43 +26,48 @@ class ScheduleViewController: UIViewController, UICalendarViewDelegate, MainStor
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        style()
+        configureCalendar()
+        configureTableView()
         fetchScheduleData(for: Date())
         
-        calendarView.calendar = gregorianCalendar
-        calendarView.locale = Locale(identifier: "en_CA")
-        calendarView.fontDesign = .rounded
-        calendarView.visibleDateComponents = DateComponents(calendar: Calendar(identifier: .gregorian), year: 2023, month: 3, day: 25)
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.backgroundColor = .red
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "CustomTableViewCell")
-    }
-    
-    // MARK: - Function
-    func style() {
+        
         view.addSubview(calendarView)
         view.addSubview(tableView)
         
-        calendarView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.navigationController?.isNavigationBarHidden = true
-        
         NSLayoutConstraint.activate([
             calendarView.topAnchor.constraint(equalTo: topView.bottomAnchor),
-            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            calendarView.heightAnchor.constraint(equalToConstant: view.bounds.height / 2),
+            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+
+            calendarView.heightAnchor.constraint(equalToConstant: (view.bounds.height / 2) - 51),
             
             tableView.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    // MARK: - Function
+    func configureTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+            
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.backgroundColor = .red
+    }
+    
+    func configureCalendar() {
+        calendarView.translatesAutoresizingMaskIntoConstraints = false
+
+        calendarView.calendar = .current
+        calendarView.locale = Locale(identifier: "en_CA")
+        calendarView.fontDesign = .rounded
+        calendarView.delegate = self
     }
     
     func fetchScheduleData(for date: Date) {
@@ -100,5 +105,11 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
         cell.updateScheduleCell(courseName: schedule.courseName, room: schedule.room, startTime: startTime, endTime: endTime)
         
         return cell
+    }
+}
+
+extension ScheduleViewController: UICalendarViewDelegate {
+    func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
+        return nil
     }
 }
