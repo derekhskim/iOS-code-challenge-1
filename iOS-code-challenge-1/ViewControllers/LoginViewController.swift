@@ -65,6 +65,8 @@ class LoginViewController: UIViewController, MainStoryBoarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        passwordTextField.text = "K131313_!"
+        
         isRememberMeChecked = UserDefaults.standard.bool(forKey: "RememberMe")
         rememberMeButton.setImage(isRememberMeChecked ? CheckImages.checked : CheckImages.unchecked, for: .normal)
         

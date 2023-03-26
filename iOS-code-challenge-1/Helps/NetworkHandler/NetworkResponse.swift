@@ -9,17 +9,13 @@ import Foundation
 
 struct ServerResponse: Codable {
     let error: ErrorResponse?
-    let data: [Schedule]?
+}
+
+struct ScheduleResponse: Codable {
+    let record: ScheduleData
     
-    enum CodingKeys: String, CodingKey {
-        case error
-        case data
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        error = try container.decodeIfPresent(ErrorResponse.self, forKey: .error)
-        data = try container.decodeIfPresent([Schedule].self, forKey: .data)
+    struct ScheduleData: Codable {
+        let data: [Schedule]
     }
 }
 

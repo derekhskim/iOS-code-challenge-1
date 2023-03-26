@@ -86,12 +86,8 @@ class NetworkManager {
     }
     
     // MARK: - Fetch schedule data via "GET" method
-    func getScheduleData(for date: Date, completion: @escaping (Result<[Schedule], Error>) -> Void) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter.string(from: date)
-        
-        guard let url = URL(string: "\(baseUrl)/schedule?date=\(dateString)") else {
+    func getScheduleData(completion: @escaping ([Schedule]?, Error?) -> Void) {
+        guard let url = URL(string: "\(baseUrl)/schedule") else {
             print("Error: Cannot create URL")
             return
         }
@@ -104,7 +100,6 @@ class NetworkManager {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("Error calling GET")
-                completion(.failure(error))
                 return
             }
             
@@ -117,21 +112,20 @@ class NetworkManager {
                 print("Status code for Schedule Data: \(response.statusCode)")
             }
             
+            if let jsonString = String(data: data, encoding: .utf8) {
+                    print("Raw JSON: \(jsonString)")
+                }
+            
             do {
-                let serverResponse = try JSONDecoder().decode(ServerResponse.self, from: data)
-                if let schedules = serverResponse.data {
-                    DispatchQueue.main.async {
-                        completion(.success(schedules))
-                    }
-                } else if let errorResponse = serverResponse.error {
-                    print("Error: \(errorResponse.message)")
-                    completion(.failure(error!))
+                let scheduleResponse = try JSONDecoder().decode(ScheduleResponse.self, from: data)
+                DispatchQueue.main.async {
+                    completion(scheduleResponse.record.data, nil)
                 }
             } catch {
-                print("Error: Trying to convert JSON data to string")
-                completion(.failure(error))
-                return
+                print("Error decoding schedules: \(error.localizedDescription)")
+                completion(nil, error)
             }
+
         }
         task.resume()
     }
