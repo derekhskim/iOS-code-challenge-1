@@ -29,19 +29,7 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "CustomTableViewCell")
-        tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "EmptyTableViewCell")        
-
-        NSLayoutConstraint.activate([
-            calendarView.topAnchor.constraint(equalTo: topView.bottomAnchor),
-            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            calendarView.bottomAnchor.constraint(equalTo: tableView.topAnchor),
-            calendarView.heightAnchor.constraint(greaterThanOrEqualToConstant: 300),
-        
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        ])
+        tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "EmptyTableViewCell")
         
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -96,16 +84,35 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
         let selection = UICalendarSelectionSingleDate(delegate: self)
         calendarView.selectionBehavior = selection
         
-        let currentDateComponents = gregorianCalendar.dateComponents([.year, .month, .day], from: Date())
-        selection.setSelected(currentDateComponents, animated: true)
+        Task {
+            await sleepOneSecond()
+            let currentDateComponents = gregorianCalendar.dateComponents([.year, .month, .day], from: Date())
+            selection.setSelected(currentDateComponents, animated: true)
+            
+            self.dateSelection(selection, didSelectDate: currentDateComponents)
+        }
                        
         view.addSubview(calendarView)
+        
+        NSLayoutConstraint.activate([
+            calendarView.topAnchor.constraint(equalTo: topView.bottomAnchor),
+            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            calendarView.heightAnchor.constraint(greaterThanOrEqualToConstant: 300)
+        ])
     }
     
     func configureTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     func fetchScheduleData() {
@@ -136,8 +143,15 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
 
         tableView.reloadData()
     }
-
     
+    func sleepOneSecond() async {
+        do {
+            try await Task.sleep(nanoseconds: 1000000000)
+        } catch {
+            print("Error while sleeping: \(error.localizedDescription)")
+        }
+    }
+
 }
 
 // MARK: - Extension
@@ -167,20 +181,10 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ScheduleViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
-//    func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
-//        return nil
-//    }
-    
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         guard let dateComponents = dateComponents, let selectedDate = gregorianCalendar.date(from: dateComponents) else { return }
-//        print(dateComponents)
         
         updateTableViewData(for: selectedDate)
-
-        
-        if selectedDate == DateComponents(calendar: Calendar(identifier: .gregorian), year: 2023, month: 3, day: 26).date {
-            updateTableViewData(for: selectedDate)
-        }
         
     }
     
