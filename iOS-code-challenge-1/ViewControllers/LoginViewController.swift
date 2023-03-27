@@ -70,6 +70,7 @@ class LoginViewController: UIViewController, MainStoryBoarded {
         super.viewDidLoad()
 
         initializeHideKeyboard()
+        styleTextFields()
         
         isRememberMeChecked = UserDefaults.standard.bool(forKey: "RememberMe")
         rememberMeButton.setImage(isRememberMeChecked ? CheckImages.checked : CheckImages.unchecked, for: .normal)
@@ -89,6 +90,11 @@ class LoginViewController: UIViewController, MainStoryBoarded {
     }
     
     // MARK: - Function
+    func styleTextFields() {
+        emailTextField.backgroundColor = UIColor.appColor(LPColor.LPVerySubtleGray)
+        passwordTextField.backgroundColor = UIColor.appColor(LPColor.LPVerySubtleGray)
+    }
+    
     func clearTextFields() {
         emailTextField.text = ""
         passwordTextField.text = ""
