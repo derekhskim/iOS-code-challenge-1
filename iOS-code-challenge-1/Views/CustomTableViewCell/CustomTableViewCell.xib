@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4PX-J1-5MV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                        <rect key="frame" x="5" y="10" width="310" height="70"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ur-Cy-MWg">
                                 <rect key="frame" x="10" y="12.000000000000002" width="116" height="21.666666666666671"/>
@@ -27,13 +27,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdp-le-hfe">
-                                <rect key="frame" x="12" y="58" width="39.666666666666671" height="18"/>
+                                <rect key="frame" x="12" y="38" width="39.666666666666664" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="LPTextGray"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TU-OU-X2d">
-                                <rect key="frame" x="274" y="58" width="34" height="18"/>
+                                <rect key="frame" x="264" y="38" width="34" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="LPTextGray"/>
                                 <nil key="highlightedColor"/>
@@ -52,10 +52,10 @@
                 </subviews>
                 <color key="backgroundColor" name="LPVerySubtleGray"/>
                 <constraints>
-                    <constraint firstItem="4PX-J1-5MV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5jN-jl-Ze7"/>
-                    <constraint firstAttribute="trailing" secondItem="4PX-J1-5MV" secondAttribute="trailing" id="7ER-bZ-Lbf"/>
-                    <constraint firstAttribute="bottom" secondItem="4PX-J1-5MV" secondAttribute="bottom" id="8Na-Ab-G1K"/>
-                    <constraint firstItem="4PX-J1-5MV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PH8-Bt-OBd"/>
+                    <constraint firstItem="4PX-J1-5MV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="huT-jU-UGb"/>
+                    <constraint firstItem="4PX-J1-5MV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="niH-4b-rQF"/>
+                    <constraint firstAttribute="bottom" secondItem="4PX-J1-5MV" secondAttribute="bottom" constant="10" id="pMW-Fo-U3O"/>
+                    <constraint firstAttribute="trailing" secondItem="4PX-J1-5MV" secondAttribute="trailing" constant="5" id="yzJ-0v-2ds"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -104,7 +104,8 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
     
     func configureTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+        tableView.separatorStyle = .none
+
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -131,6 +132,8 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
     
     func updateTableViewData(for selectedDate: Date) {
         filteredSchedules = schedules.filter { schedule in
+            // Sets data to be shown on the current day
+            // If data consists of actual dates, this code can be modified by editing from:
             let scheduleStartTime = gregorianCalendar.dateComponents([.year, .month, .day], from: Date())
             let scheduleDate = gregorianCalendar.date(from: scheduleStartTime)
 
@@ -146,6 +149,7 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
     
     func sleepOneSecond() async {
         do {
+            // Wait one second
             try await Task.sleep(nanoseconds: 1000000000)
         } catch {
             print("Error while sleeping: \(error.localizedDescription)")
