@@ -24,10 +24,10 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="launchpad-mentoring-home-page-img" translatesAutoresizingMaskIntoConstraints="NO" id="KMy-gA-bfT">
-                                <rect key="frame" x="0.0" y="217" width="393" height="210"/>
+                                <rect key="frame" x="-1" y="217" width="395" height="210"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="749" constant="210" id="35j-rc-hCC"/>
-                                    <constraint firstAttribute="width" priority="749" constant="395" id="b0o-r5-XSw"/>
+                                    <constraint firstAttribute="height" constant="210" id="35j-rc-hCC"/>
+                                    <constraint firstAttribute="width" constant="395" id="b0o-r5-XSw"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KoO-bb-Pqu">
@@ -93,9 +93,7 @@
                             <constraint firstItem="401-sT-43L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="moh-4S-IWj"/>
                             <constraint firstItem="401-sT-43L" firstAttribute="top" secondItem="yTe-tL-CGb" secondAttribute="bottom" constant="60" id="p5g-we-yhd"/>
                             <constraint firstItem="Cri-ph-rZ0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="sax-dw-bGc"/>
-                            <constraint firstAttribute="trailing" secondItem="KMy-gA-bfT" secondAttribute="trailing" id="thr-jW-BgW"/>
                             <constraint firstItem="Cri-ph-rZ0" firstAttribute="top" secondItem="KoO-bb-Pqu" secondAttribute="bottom" constant="40" id="w1u-UY-kPo"/>
-                            <constraint firstItem="KMy-gA-bfT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xYr-sn-Ubs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yTe-tL-CGb" secondAttribute="trailing" constant="140" id="yN5-C2-tY8"/>
                             <constraint firstItem="yTe-tL-CGb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="zm6-5M-hLY"/>
                         </constraints>
@@ -126,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szF-qX-fhT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813" y="-27"/>
+            <point key="canvasLocation" x="1961" y="-27"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KMj-YF-i3G">

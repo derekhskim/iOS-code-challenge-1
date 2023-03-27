@@ -112,11 +112,6 @@ class NetworkManager {
                 print("Status code for Schedule Data: \(response.statusCode)")
             }
             
-            // Prints JSON as raw data
-//            if let jsonString = String(data: data, encoding: .utf8) {
-//                    print("Raw JSON: \(jsonString)")
-//                }
-            
             do {
                 guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                     print("Error: Cannot convert data to JSON object")

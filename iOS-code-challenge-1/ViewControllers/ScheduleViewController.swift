@@ -7,7 +7,11 @@
 
 import UIKit
 
+// Everything programmatically
 class ScheduleViewController: UIViewController, MainStoryBoarded {
+    
+    weak var delegate: LoginViewControllerDelegate?
+    var isRememberMeChecked: Bool = false
     
     let topView = UIView()
     let calendarView = UICalendarView()
@@ -70,6 +74,7 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
     }
     
     @objc func backButtonTapped() {
+        delegate?.didSignOut(isRememberMeChecked: isRememberMeChecked)
         self.navigationController?.popViewController(animated: true)
     }
     

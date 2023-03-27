@@ -22,8 +22,10 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func goToScheduleVC() {
+    func goToScheduleVC(isRememberMeChecked: Bool) {
         let vc = ScheduleViewController.instantiate()
+        vc.delegate = navigationController.viewControllers.first as? LoginViewController
+        vc.isRememberMeChecked = isRememberMeChecked
         navigationController.pushViewController(vc, animated: true)
     }
     
