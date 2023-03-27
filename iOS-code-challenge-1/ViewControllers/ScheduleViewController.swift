@@ -154,7 +154,7 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
     func sleepOneSecond() async {
         do {
             // Wait one second
-            try await Task.sleep(nanoseconds: 1000000000)
+            try await Task.sleep(nanoseconds: 1500000000)
         } catch {
             print("Error while sleeping: \(error.localizedDescription)")
         }
