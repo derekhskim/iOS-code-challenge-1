@@ -77,7 +77,6 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         
         calendarView.calendar = .current
-        calendarView.sizeToFit()
         calendarView.locale = Locale(identifier: "en_CA")
         calendarView.fontDesign = .rounded
         

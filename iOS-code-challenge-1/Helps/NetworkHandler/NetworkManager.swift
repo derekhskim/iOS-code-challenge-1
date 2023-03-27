@@ -112,11 +112,28 @@ class NetworkManager {
                 print("Status code for Schedule Data: \(response.statusCode)")
             }
             
-            if let jsonString = String(data: data, encoding: .utf8) {
-                    print("Raw JSON: \(jsonString)")
-                }
+            // Prints JSON as raw data
+//            if let jsonString = String(data: data, encoding: .utf8) {
+//                    print("Raw JSON: \(jsonString)")
+//                }
             
             do {
+                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    print("Error: Cannot convert data to JSON object")
+                    return
+                }
+                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                    print("Error: Cannot convert JSON object to Pretty JSON data")
+                    return
+                }
+                guard let jsonResponse = String(data: prettyJsonData, encoding: .utf8) else {
+                    print("Error: Couldn't print JSON in String")
+                    return
+                }
+                
+                // Returns response in JSON
+                print(jsonResponse)
+                
                 let scheduleResponse = try JSONDecoder().decode(ScheduleResponse.self, from: data)
                 DispatchQueue.main.async {
                     completion(scheduleResponse.record.data, nil)
