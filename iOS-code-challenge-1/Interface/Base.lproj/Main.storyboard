@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iO5-Zz-nyz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -17,21 +17,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="LaunchpadByVogLogo" translatesAutoresizingMaskIntoConstraints="NO" id="odV-DC-Xlk">
-                                <rect key="frame" x="77" y="69" width="239" height="128"/>
+                                <rect key="frame" x="77" y="59" width="239" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="128" id="Cey-3P-40G"/>
                                     <constraint firstAttribute="width" priority="750" constant="239" id="raZ-Ch-yPQ"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="launchpad-mentoring-home-page-img" translatesAutoresizingMaskIntoConstraints="NO" id="KMy-gA-bfT">
-                                <rect key="frame" x="-1" y="217" width="395" height="210"/>
+                                <rect key="frame" x="-1" y="207" width="395" height="210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="210" id="35j-rc-hCC"/>
                                     <constraint firstAttribute="width" constant="395" id="b0o-r5-XSw"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KoO-bb-Pqu">
-                                <rect key="frame" x="40" y="477" width="313" height="51"/>
+                                <rect key="frame" x="40" y="467" width="313" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="g2T-iq-KBc"/>
                                 </constraints>
@@ -39,7 +39,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cri-ph-rZ0">
-                                <rect key="frame" x="40" y="568" width="313" height="51"/>
+                                <rect key="frame" x="40" y="558" width="313" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="LVz-kG-7MT"/>
                                 </constraints>
@@ -47,7 +47,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTe-tL-CGb">
-                                <rect key="frame" x="40" y="639" width="213" height="38"/>
+                                <rect key="frame" x="40" y="629" width="213" height="48"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="square" catalog="system" imagePlacement="leading" title="Remember Me" imagePadding="10">
                                     <color key="baseForegroundColor" systemColor="systemGray2Color"/>
@@ -86,7 +86,7 @@
                             <constraint firstItem="KoO-bb-Pqu" firstAttribute="top" secondItem="KMy-gA-bfT" secondAttribute="bottom" constant="50" id="R7z-Sl-cQ1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="401-sT-43L" secondAttribute="trailing" constant="40" id="TZJ-dX-etU"/>
                             <constraint firstItem="KMy-gA-bfT" firstAttribute="top" secondItem="odV-DC-Xlk" secondAttribute="bottom" constant="20" id="d8j-cN-1zu"/>
-                            <constraint firstItem="odV-DC-Xlk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="fjH-mx-yBP"/>
+                            <constraint firstItem="odV-DC-Xlk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fjH-mx-yBP"/>
                             <constraint firstItem="KMy-gA-bfT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gCN-XM-UNg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KoO-bb-Pqu" secondAttribute="trailing" constant="40" id="jkM-br-dzP"/>
                             <constraint firstItem="KoO-bb-Pqu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="mcZ-9L-ank"/>
@@ -98,7 +98,6 @@
                             <constraint firstItem="yTe-tL-CGb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="zm6-5M-hLY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="A3E-ho-tFa"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="emailTextField" destination="KoO-bb-Pqu" id="mzn-Uz-xDH"/>
@@ -125,24 +124,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szF-qX-fhT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1961" y="-27"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="KMj-YF-i3G">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iO5-Zz-nyz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BMQ-yi-kz0">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="uu5-BC-Y5r"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WBr-ro-FeN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="116.79389312977099" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <designables>

@@ -69,13 +69,21 @@ class LoginViewController: UIViewController, MainStoryBoarded {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initializeHideKeyboard()
+        
         isRememberMeChecked = UserDefaults.standard.bool(forKey: "RememberMe")
         rememberMeButton.setImage(isRememberMeChecked ? CheckImages.checked : CheckImages.unchecked, for: .normal)
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         
         emailTextField.text = UserDefaults.standard.string(forKey: "UserEmail")
         emailTextField.keyboardType = .emailAddress
         
         passwordTextField.isSecureTextEntry = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -85,9 +93,52 @@ class LoginViewController: UIViewController, MainStoryBoarded {
         emailTextField.text = ""
         passwordTextField.text = ""
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 2
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
 }
 
 // MARK: - Extension
+extension LoginViewController {
+    func initializeHideKeyboard(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissMyKeyboard(){
+        view.endEditing(true)
+    }
+    
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+}
+
 extension LoginViewController: LoginViewControllerDelegate {
     func didSignOut(isRememberMeChecked: Bool) {
         if !isRememberMeChecked {
