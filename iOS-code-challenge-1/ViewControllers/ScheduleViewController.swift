@@ -14,6 +14,7 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
     let tableView = UITableView()
     let gregorianCalendar = Calendar(identifier: .gregorian)
     var schedules: [Schedule] = []
+    var filteredSchedules: [Schedule?] = []
     
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
@@ -28,6 +29,7 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "CustomTableViewCell")
+        tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "EmptyTableViewCell")        
 
         NSLayoutConstraint.activate([
             calendarView.topAnchor.constraint(equalTo: topView.bottomAnchor),
@@ -87,13 +89,16 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         
         calendarView.calendar = .current
+        calendarView.sizeToFit()
         calendarView.locale = Locale(identifier: "en_CA")
         calendarView.fontDesign = .rounded
-        calendarView.delegate = self
         
         let selection = UICalendarSelectionSingleDate(delegate: self)
         calendarView.selectionBehavior = selection
         
+        let currentDateComponents = gregorianCalendar.dateComponents([.year, .month, .day], from: Date())
+        selection.setSelected(currentDateComponents, animated: true)
+                       
         view.addSubview(calendarView)
     }
     
@@ -117,23 +122,43 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
             }
     }
     
+    func updateTableViewData(for selectedDate: Date) {
+        filteredSchedules = schedules.filter { schedule in
+            let scheduleStartTime = gregorianCalendar.dateComponents([.year, .month, .day], from: Date())
+            let scheduleDate = gregorianCalendar.date(from: scheduleStartTime)
+
+            return scheduleDate == selectedDate
+        }
+
+        if filteredSchedules.isEmpty {
+            filteredSchedules = [nil]
+        }
+
+        tableView.reloadData()
+    }
+
+    
 }
 
 // MARK: - Extension
 extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return schedules.count
+        return filteredSchedules.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as? CustomTableViewCell else {
+        if let schedule = filteredSchedules[indexPath.row] {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as? CustomTableViewCell else {
                 fatalError("Unable to dequeue CustomTableViewCell")
             }
-            
-            let schedule = schedules[indexPath.row]
             cell.updateScheduleCell(courseName: schedule.courseName, room: schedule.room, startTime: schedule.startTime, endTime: schedule.endTime)
-            
             return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as? EmptyTableViewCell else {
+                fatalError("Unable to dequeue EmptyTableViewCell")
+            }
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -142,14 +167,21 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ScheduleViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
-    func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
-        guard let day = dateComponents.day else {
-            return nil
-        }
-        return nil
-    }
+//    func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
+//        return nil
+//    }
     
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-        print(dateComponents)
+        guard let dateComponents = dateComponents, let selectedDate = gregorianCalendar.date(from: dateComponents) else { return }
+//        print(dateComponents)
+        
+        updateTableViewData(for: selectedDate)
+
+        
+        if selectedDate == DateComponents(calendar: Calendar(identifier: .gregorian), year: 2023, month: 3, day: 26).date {
+            updateTableViewData(for: selectedDate)
+        }
+        
     }
+    
 }
