@@ -9,6 +9,9 @@ Github Repository: https://github.com/treasure3210/iOS-code-challenge-1
 ID: treasure3210+1@gmail.com
 PW: K131313_!
 
+## Demo:
+![](./iOS-Code-Challenge-1-Demo.gif)
+
 ## Note(s): 
 I have used UICalendarView available native by Apple: https://developer.apple.com/documentation/uikit/uicalendarview
 
