@@ -136,12 +136,10 @@ class ScheduleViewController: UIViewController, MainStoryBoarded {
     
     func updateTableViewData(for selectedDate: Date) {
         filteredSchedules = schedules.filter { schedule in
-            // Sets data to be shown on the current day
-            // If data consists of actual dates, this code can be modified by editing from:
-            let scheduleStartTime = gregorianCalendar.dateComponents([.year, .month, .day], from: Date())
-            let scheduleDate = gregorianCalendar.date(from: scheduleStartTime)
+            // Updates tableviewdata from selectedDate and Schedule's time
+            let scheduleDate = gregorianCalendar.date(from: gregorianCalendar.dateComponents([.year, .month, .day], from: schedule.startTime))
 
-            return scheduleDate == selectedDate
+            return scheduleDate == gregorianCalendar.date(from: gregorianCalendar.dateComponents([.year, .month, .day], from: selectedDate))
         }
 
         if filteredSchedules.isEmpty {

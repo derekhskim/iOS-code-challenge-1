@@ -130,7 +130,8 @@ class NetworkManager {
                 print(jsonResponse)
                 
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "h:mm a"
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                dateFormatter.locale = Locale(identifier: "en_CA")
                 
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
