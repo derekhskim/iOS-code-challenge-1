@@ -28,10 +28,18 @@ class CustomTableViewCell: UITableViewCell {
         backgroundHoldingView.clipsToBounds = true
     }
     
-    func updateScheduleCell(courseName: String, room: String, startTime: String, endTime: String) {
+    func updateScheduleCell(courseName: String, room: String, startTime: Date, endTime: Date) {
         courseNameLabel.text = courseName
         roomLabel.text = room
-        timeLabel.text = "\(startTime) - \(endTime)"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.locale = Locale(identifier: "en_CA")
+            
+        let startTimeString = dateFormatter.string(from: startTime)
+        let endTimeString = dateFormatter.string(from: endTime)
+        
+        timeLabel.text = "\(startTimeString) - \(endTimeString)"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -129,7 +129,14 @@ class NetworkManager {
                 // Returns response in JSON
                 print(jsonResponse)
                 
-                let scheduleResponse = try JSONDecoder().decode(ScheduleResponse.self, from: data)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "h:mm a"
+                
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                dateFormatter.locale = Locale(identifier: "en_CA")
+                
+                let scheduleResponse = try decoder.decode(ScheduleResponse.self, from: data)
                 DispatchQueue.main.async {
                     completion(scheduleResponse.record.data, nil)
                 }
@@ -137,7 +144,7 @@ class NetworkManager {
                 print("Error decoding schedules: \(error.localizedDescription)")
                 completion(nil, error)
             }
-
+            
         }
         task.resume()
     }

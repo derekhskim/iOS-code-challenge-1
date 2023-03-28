@@ -10,8 +10,8 @@ import Foundation
 struct Schedule: Codable {
     let courseName: String
     let room: String
-    let startTime: String
-    let endTime: String
+    let startTime: Date
+    let endTime: Date
     
     enum CodingKeys: String, CodingKey {
         case courseName = "course_name"
